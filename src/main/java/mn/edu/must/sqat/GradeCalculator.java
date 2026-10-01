@@ -34,7 +34,10 @@ public class GradeCalculator {
         check("сорил1", quiz1, MAX_QUIZ1);
         check("сорил2", quiz2, MAX_QUIZ2);
         check("шалгалт", exam, MAX_EXAM);
-        return att + lab + quiz1 + quiz2 + exam;
+        // double-ийн нийлбэр 8.8+35.3+9.3+9.4+27.2 = 89.99999999999999 болж A-г B болгодог
+        // (тестээр илэрсэн). Оноог 0.01 нарийвчлалтай бүртгэдэг тул 2 оронгоор бөөрөнхийлнө.
+        double sum = att + lab + quiz1 + quiz2 + exam;
+        return Math.round(sum * 100.0) / 100.0;
     }
 
     private static void check(String name, double value, double max) {
