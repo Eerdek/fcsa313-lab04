@@ -1,0 +1,108 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------< mn.edu.must.sqat:lab04-junit >--------------------
+[INFO] Building lab04-junit 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ lab04-junit ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory C:\THE_FEDzUP\hicheel\???????? ?????????? ??????? ???????? ?? ???????\lab04\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.8.0:compile (default-compile) @ lab04-junit ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to C:\THE_FEDzUP\hicheel\???????? ?????????? ??????? ???????? ?? ???????\lab04\target\classes
+[INFO] 
+[INFO] --- resources:3.0.2:testResources (default-testResources) @ lab04-junit ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory C:\THE_FEDzUP\hicheel\???????? ?????????? ??????? ???????? ?? ???????\lab04\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.8.0:testCompile (default-testCompile) @ lab04-junit ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to C:\THE_FEDzUP\hicheel\???????? ?????????? ??????? ???????? ?? ???????\lab04\target\test-classes
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ lab04-junit ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running mn.edu.must.sqat.GradeCalculatorTest
+[ERROR] Tests run: 16, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.129 s <<< FAILURE! -- in mn.edu.must.sqat.GradeCalculatorTest
+[ERROR] mn.edu.must.sqat.GradeCalculatorTest.fractionalPartsSummingToNinetyGiveA -- Time elapsed: 0.005 s <<< FAILURE!
+org.opentest4j.MultipleFailuresError: 
+Multiple Failures (2 failures)
+	org.opentest4j.AssertionFailedError: expected: <90.0> but was: <89.99999999999999>
+	org.opentest4j.AssertionFailedError: expected: <A> but was: <B>
+	at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:80)
+	at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:44)
+	at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:38)
+	at org.junit.jupiter.api.Assertions.assertAll(Assertions.java:2944)
+	at mn.edu.must.sqat.GradeCalculatorTest.fractionalPartsSummingToNinetyGiveA(GradeCalculatorTest.java:168)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	Suppressed: org.opentest4j.AssertionFailedError: expected: <90.0> but was: <89.99999999999999>
+		at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+		at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+		at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+		at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:86)
+		at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:81)
+		at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1014)
+		at mn.edu.must.sqat.GradeCalculatorTest.lambda$fractionalPartsSummingToNinetyGiveA$21(GradeCalculatorTest.java:169)
+		at org.junit.jupiter.api.AssertAll.lambda$assertAll$0(AssertAll.java:68)
+		at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+		at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992)
+		at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+		at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+		at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+		at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+		at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+		at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:77)
+		... 7 more
+	Suppressed: org.opentest4j.AssertionFailedError: expected: <A> but was: <B>
+		at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+		at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+		at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+		at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+		at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+		at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+		at mn.edu.must.sqat.GradeCalculatorTest.lambda$fractionalPartsSummingToNinetyGiveA$22(GradeCalculatorTest.java:170)
+		at org.junit.jupiter.api.AssertAll.lambda$assertAll$0(AssertAll.java:68)
+		at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+		at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992)
+		at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+		at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+		at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+		at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+		at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+		at org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:77)
+		... 7 more
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   GradeCalculatorTest.fractionalPartsSummingToNinetyGiveA:168 Multiple Failures (2 failures)
+	org.opentest4j.AssertionFailedError: expected: <90.0> but was: <89.99999999999999>
+	org.opentest4j.AssertionFailedError: expected: <A> but was: <B>
+[INFO] 
+[ERROR] Tests run: 16, Failures: 1, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.481 s
+[INFO] Finished at: 2026-10-01T12:41:25+08:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.2.5:test (default-test) on project lab04-junit: There are test failures.
+[ERROR] 
+[ERROR] Please refer to C:\THE_FEDzUP\hicheel\???????? ?????????? ??????? ???????? ?? ???????\lab04\target\surefire-reports for the individual test results.
+[ERROR] Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
