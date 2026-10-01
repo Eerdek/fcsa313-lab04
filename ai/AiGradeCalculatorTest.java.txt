@@ -1,0 +1,86 @@
+package mn.edu.must.sqat;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+
+class AiGradeCalculatorTest {
+
+    private GradeCalculator calc;
+
+    @BeforeEach
+    void setUp() {
+        calc = new GradeCalculator();
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "100, A", "95, A", "90, A",
+            "89, B", "85, B", "80, B",
+            "79, C", "75, C", "70, C",
+            "69, D", "65, D", "60, D",
+            "59, F", "30, F", "0, F"
+    })
+    void letterGrade_returnsExpectedLetter(double score, String expected) {
+        assertEquals(expected, calc.letterGrade(score));
+    }
+
+    @Test
+    void letterGrade_negativeScore_throws() {
+        assertThrows(IllegalArgumentException.class, () -> calc.letterGrade(-1));
+    }
+
+    @Test
+    void letterGrade_above100_throws() {
+        assertThrows(IllegalArgumentException.class, () -> calc.letterGrade(101));
+    }
+
+    @Test
+    void totalScore_validInputs_returnsSum() {
+        assertEquals(80.0, calc.totalScore(8, 32, 8, 8, 24), 0.001);
+    }
+
+    @Test
+    void totalScore_allZeros_returnsZero() {
+        assertEquals(0.0, calc.totalScore(0, 0, 0, 0, 0), 0.001);
+    }
+
+    @Test
+    void totalScore_allMax_returns100() {
+        assertEquals(100.0, calc.totalScore(10, 40, 10, 10, 30), 0.001);
+    }
+
+    @Test
+    void totalScore_negativeAttendance_throws() {
+        assertThrows(IllegalArgumentException.class, () -> calc.totalScore(-1, 20, 5, 5, 15));
+    }
+
+    @Test
+    void totalScore_attendanceAboveMax_throws() {
+        assertThrows(IllegalArgumentException.class, () -> calc.totalScore(11, 20, 5, 5, 15));
+    }
+
+    @Test
+    void totalScore_labAboveMax_throws() {
+        assertThrows(IllegalArgumentException.class, () -> calc.totalScore(5, 41, 5, 5, 15));
+    }
+
+    @Test
+    void totalScore_quiz1AboveMax_throws() {
+        assertThrows(IllegalArgumentException.class, () -> calc.totalScore(5, 20, 11, 5, 15));
+    }
+
+    @Test
+    void totalScore_quiz2Negative_throws() {
+        assertThrows(IllegalArgumentException.class, () -> calc.totalScore(5, 20, 5, -0.5, 15));
+    }
+
+    @Test
+    void totalScore_examAboveMax_throws() {
+        assertThrows(IllegalArgumentException.class, () -> calc.totalScore(5, 20, 5, 5, 31));
+    }
+}

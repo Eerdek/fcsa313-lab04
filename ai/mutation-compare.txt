@@ -1,0 +1,10 @@
+Мутант                                     | GradeCalculatorTest    | AiGradeCalculatorTest 
+M0 (мутацгүй эх код)                | survived (0/50)        | survived (0/26)       
+M1 score >= 90 → score > 90                    | KILLED (3/50 fail)     | KILLED (1/26 fail)    
+M2 score >= 90 → score >= 89.5                 | KILLED (2/50 fail)     | survived (0/26)       
+M3 score >= 60 → score >= 59.5                 | KILLED (2/50 fail)     | survived (0/26)       
+M4 score >= 80 → score > 80                    | KILLED (1/50 fail)     | KILLED (1/26 fail)    
+M5 totalScore бөөрөнхийлөлтийг авсан (return sum) | KILLED (1/50 fail)     | survived (0/26)       
+M6 MAX_QUIZ2 10 → 11                           | KILLED (2/50 fail)     | survived (0/26)       
+M7 MAX_EXAM 30 → 30.5                          | KILLED (1/50 fail)     | survived (0/26)       
+M8 score > 100 → score > 100.5                 | KILLED (2/50 fail)     | survived (0/26)       
