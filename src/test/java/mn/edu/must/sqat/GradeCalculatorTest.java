@@ -7,6 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 @DisplayName("GradeCalculator — нэгжийн тестүүд")
 class GradeCalculatorTest {
@@ -168,5 +171,74 @@ class GradeCalculatorTest {
         assertAll(
                 () -> assertEquals(90.0, total, 0.0),
                 () -> assertEquals("A", grade));
+    }
+
+    // ---------- Parameterized тестүүд ----------
+
+    @ParameterizedTest(name = "letterGrade({0}) = {1}")
+    @DisplayName("letterGrade: дүн бүрийн хязгаар ба түүний яг доорх утга")
+    @CsvSource({
+            "100,   A",
+            "95,    A",
+            "90,    A",
+            "89.99, B",
+            "80,    B",
+            "79.99, C",
+            "70,    C",
+            "69.99, D",
+            "60,    D",
+            "59.99, F",
+            "0,     F"
+    })
+    void letterGradeBoundaries(double score, String expected) {
+        // Arrange: score, expected (CSV мөр)
+        String grade = calc.letterGrade(score);              // Act
+        assertEquals(expected, grade);                       // Assert
+    }
+
+    @ParameterizedTest(name = "letterGrade({0}) → IllegalArgumentException")
+    @DisplayName("letterGrade: 0-100 мужаас гадуурх утгууд exception шиднэ")
+    @ValueSource(doubles = {-100, -1, -0.01, 100.01, 101, 1000})
+    void letterGradeOutOfRangeThrows(double score) {
+        // Arrange: score (мужаас гадуур)
+        assertThrows(IllegalArgumentException.class,         // Act + Assert
+                () -> calc.letterGrade(score));
+    }
+
+    @ParameterizedTest(name = "totalScore({0}, {1}, {2}, {3}, {4}) = {5}")
+    @DisplayName("totalScore: хүчинтэй оноонуудын нийлбэр (бутархай нийлбэр орсон)")
+    @CsvSource({
+            "10,  40,   10,  10,  30,   100",
+            "0,   0,    0,   0,   0,    0",
+            "9,   35,   8,   7,   25,   84",
+            "10,  30,   5,   5,   10,   60",
+            "8.8, 35.3, 9.3, 9.4, 27.2, 90",
+            "6.3, 35.3, 9.3, 9.4, 29.7, 90",
+            "9.5, 30.25, 7.5, 6.75, 5.99, 59.99"
+    })
+    void totalScoreValidSums(double att, double lab, double q1, double q2, double exam, double expected) {
+        // Arrange: CSV мөрийн 5 хэсгийн оноо ба хүлээгдэх нийлбэр
+        double total = calc.totalScore(att, lab, q1, q2, exam);   // Act
+        assertEquals(expected, total, EPS);                       // Assert
+    }
+
+    @ParameterizedTest(name = "totalScore({0}, {1}, {2}, {3}, {4}) → IllegalArgumentException")
+    @DisplayName("totalScore: аль нэг хэсэг сөрөг эсвэл дээд хязгаараас хэтэрвэл exception")
+    @CsvSource({
+            "-5,   40,   10,    10,    30",
+            "10,   -0.01, 10,   10,    30",
+            "10,   40,   -1,    10,    30",
+            "10,   40,   10,    -1,    30",
+            "10,   40,   10,    10,    -1",
+            "11,   40,   10,    10,    30",
+            "10,   41,   10,    10,    30",
+            "10,   40,   10.5,  10,    30",
+            "10,   40,   10,    11,    30",
+            "10,   40,   10,    10,    31"
+    })
+    void totalScoreInvalidPartThrows(double att, double lab, double q1, double q2, double exam) {
+        // Arrange: зөвхөн нэг хэсэг хүчингүй
+        assertThrows(IllegalArgumentException.class,              // Act + Assert
+                () -> calc.totalScore(att, lab, q1, q2, exam));
     }
 }
